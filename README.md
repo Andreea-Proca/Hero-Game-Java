@@ -8,6 +8,7 @@ In terminal, mutarea dintr-o casuta in alta se face cu literele „N”, „S”
 In interfata grafica, mutarea se face cu butoanele „North”, „South”, „East”, „West”.
 Clasa Test
  Contine metoda statica main care instantiaza un obiect de tip Game si porneste jocul.
+ 
 Clasa Game
  Contine:
 - o instanta a clasei
@@ -23,6 +24,7 @@ posibilitatea sa aleaga contul si characterul cu care vrea sa joace.
 - metoda care salveaza progresul intr-un fisier JSON (src/output/UpdatedAccounts.json)
  Am utilizat sablonul Singleton cu instantiere intarziata pentru a restrictiona numarul de instantieri
 ale clasei Game.
+
 Clasa TerminalType
  Ruleaza jocul in terminal, daca a fost ales acest mod.
  Contine:
@@ -44,6 +46,7 @@ folosire abilitati(se afiseaza abilitatile si este folosita cea aleasa de jucato
 - metoda prin care inamicul ataca jucatorul: foloseste o abilitate la intamplare
 - metoda prin care este afisatata povestea corespunzatoare pentru tipul celulei curenta, daca nu a fost vizitata,
 altfel se afiseaza un mesaj corespunzator
+
 Clasa GUIType
  Ruleaza jocul in interfata garfica, daca a fost ales acest mod.
  Contine:
@@ -71,12 +74,14 @@ altfel se afiseaza un mesaj corespunzator
 daca acesta exista in casuta curenta
 - metoda prin care, la finalul jocului, daca jucatorul a casitgat, este afisat progresul characterului:
 experineta acumulata, bani castigati, noul nivel, inamici invinsi
+
 Clasa Account
  Contine:
 - informatii despre jucator, obiect de tip Information
 - lista cu toate personajele contului
 - numarul de jocuri jucate de jucator
 - constructor al clasei
+
  Clasa Information
  -> interna clasei Account
  Contine:
@@ -102,6 +107,7 @@ Clasa Account
  - metoda build care instantiaza un obiect de tip Information
  - o clasa exceptie care arunca un mesaj de eroare atunci cand lipsesc credentialele sau numele
  Am utilizat sablonul Builder pentru a instantia un obiect de tip Information.
+ 
 Clasa Credentials
  Respecta principiul incapsularii.
  Contine:
@@ -110,6 +116,7 @@ Clasa Credentials
 - un cosntructor al clasei
 - o metoda getter care returneaza email-ul
 - o metoda getter care returneaza parola
+
 Clasa Grid
  Este o lista de liste.
  Mosteneste clasa ArrayList si reprezinta un ArrayList de ArrayList-uri de obiecte de tip Cell.
@@ -134,6 +141,7 @@ seteaza celula curenta ca fiind prima de pe harta)
 - metoda de afisare a hartii in interfata grafica, sub forma unei matrici de butoane
 - metoda care afiseaza imagini in celulele hartii, in functie de elementul care se afla
 in celula respectiva si daca celula a fost vizitata
+
 Clasa Cell
  Rreprezinta casuta a hartii.
  Contine:
@@ -147,16 +155,19 @@ Clasa Cell
 - metoda setter care seteaza elementul din cazuta curenta
 - metoda care returneaza daca casuta a fost vizitata sau nu
 - metoda care seteaza casuta ca fiind vizitata/nevizitata
+- 
 Interfata CellElement
  Este implementata de clasele Enemy, Shop, Finish si Empty.
  Reprezinta elementul aflat pe casuta curenta.
  Contine:
 - metoda ce intoarce caracterul de afisat in terminal corespunzator obiectului din casuta curenta
+
 Interfata Element
  Folosita pentru a implementa sablonul Visitor.
  Contine:
 - metoda care accepta un obiect de tip Visitor
  Metoda este implementata in clasele Warrior, Mage, Rouge, Enemy.
+ 
 Clasa abstracta Entity
  Implementeaza interfata Element.
  Contine:
@@ -177,6 +188,7 @@ va folosi abilitatea impotriva acestuia)
  - metoda pentru acceptarea unui obiect de tip Visitor
  - metoda pentru pierderea de viata
  - metoda pentru calcularea damage-ului dat de entitate
+ 
 Clasa abstracta Character
  Extinde clasa Entity.
  Contine:
@@ -204,6 +216,7 @@ Clasa abstracta Character
 - metoda care calculeaza charisma characterului
 - metoda care calculeaza dexterity-ul characterului
 - metoda pentru cumpararea unei potiuni din magazinul dat ca parametru
+
 Clasa Warrior
  Extinde clasa Character.
  Este imun la fire si are ca atribut principal strength.
@@ -219,6 +232,7 @@ experienta
 - metoda de calculare a valorii damage-ului (exista o sansa ca damage-ul dat sa fie dublu)
 - metoda care returneaza damage-ul characterului
  Am utilizat sablonul Factory pentru a instantia characterele din lista contului.
+ 
 Clasa Rogue
  Extinde clasa Character.
  Este imun la earth si are ca atribut principal dexterity.
@@ -234,6 +248,7 @@ experienta
 - metoda de calculare a valorii damage-ului (exista o sansa ca damage-ul dat sa fie dublu)
 - metoda care returneaza damage-ul characterului
  Am utilizat sablonul Factory pentru a instantia characterele din lista contului.
+ 
 Clasa Mage
  Extinde clasa Character.
  Este imun la ice si are ca atribut principal charisma.
@@ -249,12 +264,14 @@ experienta
 - metoda de calculare a valorii damage-ului (exista o sansa ca damage-ul dat sa fie dublu)
 - metoda care returneaza damage-ul characterului
  Am utilizat sablonul Factory pentru a instantia characterele din lista contului.
+ 
 Clasa CharacterFactory
  Folosita pentru a implementa sablonul Factory.
  Contine:
 - un constructor
 - metoda care instantiaza un obiect de tip Warriror, Mage sau Rogue, in functie de tipul de character primit ca 
 parametru
+
 Interfata Visitor
  Folosita pentru a implementa sablonul Visitor.
  Cotine:
@@ -263,6 +280,7 @@ Interfata Visitor
 - metoda care visiteza un obiect de tip Mage
 - metoda care visiteza un obiect de tip Enemy
  Metodele sunt implementate in clasele Ice, Fire, Earth.
+ 
 Clasa abstracta Spell
  Modeleaza abilitatile(ice, fire, earth).
  Implementeaza interfata Visitor.
@@ -273,6 +291,7 @@ Clasa abstracta Spell
 - metoda abstracta care viziteaza un obiect de tip Rogue
 - metoda abstracta care viziteaza un obiect de tip Mage
 - metoda abstracta care viziteaza un obiect de tip Enemy
+
 Clasa Ice
  Extinde(mostenseste) clasa abstracta Spell.
  Contine:
@@ -287,6 +306,7 @@ Clasa Ice
 impotriva ice
 - metoda care viziteaza un obiect de tip Enemy, acesta primind damage de la abilitate, daca nu are protectie 
 imporiva ice
+
 Clasa Fire
  Extinde(mostenseste) clasa abstracta Spell.
  Contine:
@@ -301,6 +321,7 @@ impotriva fire
 - metoda care viziteaza un obiect de tip Mage, acesta primind damage de la abilitate
 - metoda care viziteaza un obiect de tip Enemy, acesta primind damage de la abilitate, daca nu are protectie 
 imporiva fire
+
 Clasa Earth
  Extinde(mostenseste) clasa abstracta Spell.
  Contine:
@@ -315,6 +336,7 @@ impotriva earth
 - metoda care viziteaza un obiect de tip Mage, acesta primind damage de la abilitate
 - metoda care viziteaza un obiect de tip Enemy, acesta primind damage de la abilitate, daca nu are protectie 
 imporiva earth
+
 Enemy
  Extinde clasa abstracta Entity si implementeaza interfata CellElement.
  Contine:
@@ -325,6 +347,7 @@ Enemy
  - metoda pentru pierderea de viata
  - metoda getter pentru calcularea damage-ului dat de entitate
  - metoda setter pentru setarea damage-ului
+
 Enumeratia Enum
  Contine tipul de element ce se poate afla intr-o celula.
 Inventory
@@ -335,12 +358,14 @@ Inventory
 - metoda care adauga o potiune in lista
 - metoda care elimina p potiune din lista
 - metoda care calculeaza greutatea libera ramasa
+
 Interfata Potion
  Contine:
 - metoda pentru utilizarea potiunii (regenereaza viata sau mana in functie de tipul potiunii)
 - metoda getter care returneaza pretul
 - metoda getter care returneaza valorea de regenerare
 - metoda getter care returneaza greutatea potiunii
+
 Clasa HealthPotion
  Implementeaza interfata Potion
  Contine:
@@ -351,6 +376,7 @@ Clasa HealthPotion
 - o metoda getter care returneaza pretul
 - o metoda getter care returneaza valoarea de regenerare
 - o metoda getter care returneaza greutatea
+
 Clasa ManaPotion
  Implementeaza interfata Potion
  Contine:
@@ -361,6 +387,7 @@ Clasa ManaPotion
 - o metoda getter care returneaza pretul
 - o metoda getter care returneaza valoarea de regenerare
 - o metoda getter care returneaza greutatea
+
 Clasa Shop
 Implementeaza interfata CellElement.
  Contine:
@@ -368,12 +395,15 @@ Implementeaza interfata CellElement.
 - o metoda care returneaza litera corespunzatoare clasei (tipului de CellElement)
 - un constructor care initializeza si adauga potiuni in lista de potiuni
 - metoda pentru selectarea unei potiuni din lista si eliminarea ei
+
 Clasa InvalidCommandException
  Arunca o exceptie de tipul InvalidCommandException cand primeste o comanda invalida.
+ 
 Clasa Finish
  Implementeaza interfata CellElement.
  Contine:
 - o metoda care returneaza litera corespunzatoare clasei (tipului de CellElement)
+
 Clasa Empty
  Implementeaza interfata CellElement.
  Contine:
